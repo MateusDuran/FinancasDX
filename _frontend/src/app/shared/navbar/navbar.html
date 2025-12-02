@@ -1,0 +1,37 @@
+<nav class="w-full bg-white/80 backdrop-blur-md border-b border-warm-300/30 sticky top-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-2xl bg-primary-gradient flex items-center justify-center shadow-warm">
+          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <span class="font-bold text-xl text-warm-800 hidden sm:inline">Gestão Financeira</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a routerLink="/" routerLinkActive="active" (click)="goTo('/')" class="hidden md:inline-block px-4 py-2 rounded-full hover:bg-warm-100 text-warm-800 font-medium transition-all duration-300 cursor-pointer">Início</a>
+      
+      <ng-container *ngIf="!isLoggedIn()">
+        <a routerLink="/register" routerLinkActive="active" (click)="goTo('register')" class="hidden md:inline-block px-4 py-2 rounded-full hover:bg-warm-100 text-warm-800 font-medium transition-all duration-300 cursor-pointer">Criar conta</a>
+        <a routerLink="/login" routerLinkActive="active" (click)="goTo('login')" class="hidden md:inline-block px-4 py-2 rounded-full hover:bg-warm-100 text-warm-800 font-medium transition-all duration-300 cursor-pointer">Entrar</a>
+      </ng-container>
+
+      <ng-container *ngIf="isLoggedIn()">
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="goTo('dashboard')" class="hidden md:inline-block px-4 py-2 rounded-full hover:bg-warm-100 text-warm-800 font-medium transition-all duration-300 cursor-pointer">Dashboard</a>
+        <button (click)="logout()" class="hidden md:inline-block px-4 py-2.5 rounded-full bg-gradient-to-r from-danger to-danger-light text-white hover:shadow-warm font-medium transition-all duration-300 cursor-pointer">Sair</button>
+      </ng-container>
+
+      <a routerLink="/register" class="ml-2 inline-block px-5 py-2.5 bg-primary-gradient text-white rounded-full text-sm font-semibold shadow-warm hover:shadow-warm-lg hover:scale-105 transition-all duration-300 hidden md:inline-block" (click)="goTo('register')">Comece grátis</a>
+
+      <!-- Botão de menu mobile -->
+      <button class="md:hidden p-2 rounded-full hover:bg-warm-100 focus:outline-none transition-colors" aria-label="Abrir menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-warm-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
